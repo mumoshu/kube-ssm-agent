@@ -7,6 +7,11 @@
 Clone this repository and run:
 
 ```console
+$ eksctl create cluster
+
+# Replace the role-name with the InstanceRole shown in `eksctl utils describe-stack`
+$ aws iam attach-role-policy --role-name eksctl-amazing-creature-154580785-NodeInstanceRole-RXNVQC8YTLP7 --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+
 $ kubectl apply -f daemonset.yaml
 ```
 
