@@ -16,13 +16,19 @@ $ kubectl apply -f daemonset.yaml
 
 $ AWS_DEFAULT_REGION=us-west-2 aws ssm start-session --target i-04ffadbaae98a5bd0
 
-tarting session with SessionId: kuoka@c-fo.com-02742d388e6749665
+tarting session with SessionId: mumoshu@example.com-02742d388e6749665
 
 sh-4.2$ ls
 sh-4.2$ pwd
 /opt/amazon/ssm
 sh-4.2$ bash -i
 [ssm-user@ip-192-168-84-111 ssm]$
+
+[ssm-user@ip-192-168-84-111 ssm]$ exit
+sh-4.2$ exit
+
+
+Exiting session with sessionId: mumoshu@example.com-02742d388e6749665.
 ```
 
 It worth noting that you should delete the daemonset when you don't need node access, so that a malicious user without K8S API access but with SSM sessions manager access
