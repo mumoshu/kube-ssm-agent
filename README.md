@@ -36,7 +36,7 @@ is unable to obtain root access to nodes.
 
 ## Rationale
 
-The initial motivation was to deploy aws-ssm-agent for EKS nodegroups provisioned by `eksctl`.
+The initial motivation was to deploy aws-ssm-agent onto EKS nodes provisioned by `eksctl`. It should have no actual dependency to `eksctl`, so please try and report any issues if it didn't work properly on your other flavor of Kubernetes on AWS.
 
 This is an alternative to installing aws-ssm-agent binaryes directly on nodes, or enabling ssh acecss on nodes.
 
