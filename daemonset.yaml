@@ -30,9 +30,15 @@ spec:
       volumes:
       # for systemctl to systemd access
       - name: dbus
-        hostPath: /var/run/dbus
+        hostPath:
+          path: /var/run/dbus
+          type: Directory
       - name: run-systemd
-        hostPath: /run/systemd
+        hostPath:
+          path: /run/systemd
+          type: Directory
       # mainly for dockerd access via /var/run/docker.sock
       - name: var-run
-        hostPath: /var/run
+        hostPath:
+          path: /var/run
+          type: Directory
