@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ssm-agent
+  labels:
+    k8s-app: ssm-agent
+spec:
+  selector:
+    matchLabels:
+      name: ssm-agent
+  template:
+    metadata:
+      labels:
+        name: ssm-agent
+    spec:
+      hostNetwork: true
+      containers:
+      - image: mumoshu/aws-ssm-agent:canary
+        name: ssm-agent
+        securityContext:
+          runAsUser: 0
+          privileged: true
+        volumeMounts:
+        - name: dbus
+          mountPath: /var/run/dbus
+        - name: run-systemd
+          mountPath: /run/systemd
+        - name: var-run
+          mountPath: /var/run
+      volumes:
+      # for systemctl to systemd access
+      - name: dbus
+        hostPath: /var/run/dbus
+      - name: run-systemd
+        hostPath: /run/systemd
+      # mainly for dockerd access via /var/run/docker.sock
+      - name: var-run
+        hostPath: /var/run
