@@ -27,6 +27,8 @@ spec:
           mountPath: /run/systemd
         - name: var-run
           mountPath: /var/run
+        - name: etc-sudoers
+          mountPath: /etc/sudoers.d
       volumes:
       # for systemctl to systemd access
       - name: dbus
@@ -41,4 +43,9 @@ spec:
       - name: var-run
         hostPath:
           path: /var/run
+          type: Directory
+      # Avoid this error > ERROR [MessageGatewayService] Failed to add ssm-user to sudoers file: open /etc/sudoers.d/ssm-agent-users: no such file or directory
+      - name: etc-sudoers
+        hostPath:
+          path: /etc/sudoers.d
           type: Directory
