@@ -13,6 +13,9 @@ RUN mkdir work && cd work && \
     cd .. && \
     rm -rf work
 
+RUN curl -L https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.3.0/heptio-authenticator-aws_0.3.0_linux_amd64 -o /usr/bin/aws-iam-authenticator && \
+    chmod +x /usr/bin/aws-iam-authenticator
+
 #Failed to get D-Bus connection: Operation not permitted
 #RUN systemctl status amazon-ssm-agent
 
