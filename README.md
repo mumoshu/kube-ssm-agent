@@ -83,3 +83,9 @@ Creating install directories: /usr/local/sessionmanagerplugin/bin
 Creating Symlink from /usr/local/sessionmanagerplugin/bin/session-manager-plugin to /usr/local/bin/session-manager-plugin
 Installation successful!
 ```
+
+Q2. CloudFormation stacks created by eksctl fails after enabling kube-ssm-agent
+
+A2. You should have attached the `AmazonEC2RoleforSSM` policy to the instance role managed by eksctl. CloudFormation stack deletion fail because an IAM role with one or more policies attached can't be removed.
+
+The fix would be to deattach the policy from the role, and then rerunning `eksctl delete cluster` or retrigger a stack deletion from AWS Console or awscli.
