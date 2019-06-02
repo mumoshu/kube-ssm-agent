@@ -38,7 +38,7 @@ is unable to obtain root access to nodes.
 
 The initial motivation was to deploy aws-ssm-agent onto EKS nodes provisioned by `eksctl`. It should have no actual dependency to `eksctl`, so please try and report any issues if it didn't work properly on your other flavor of Kubernetes on AWS.
 
-This is an alternative to installing aws-ssm-agent binaryes directly on nodes, or enabling ssh acecss on nodes.
+This is an alternative to installing aws-ssm-agent binaries directly on nodes, or enabling ssh access on nodes.
 
 aws-ssm-agent with AWS SSM Sessions Manager allows you to opening audited interactive terminal sessions to nodes, without maintaining SSH infrastructure.
 
@@ -46,7 +46,7 @@ aws-ssm-agent with AWS SSM Sessions Manager allows you to opening audited intera
 
 Q1. start-session fails like this
 
-```
+```console
 $ aws ssm start-session --target i-04ffadbaae98a5bd0
 
 An error occurred (TargetNotConnected) when calling the StartSession operation: i-04ffadbaae98a5bd0 is not connected.
