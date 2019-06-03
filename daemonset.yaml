@@ -16,7 +16,7 @@ spec:
       hostNetwork: true
       containers:
       - image: alexeiled/aws-ssm-agent:2.3.634
-        imagePullPolicy: Always
+        # imagePullPolicy: Always
         name: ssm-agent
         securityContext:
           runAsUser: 0
@@ -48,12 +48,6 @@ spec:
           mountPath: /etc/machine-id
         - name: etc-sudoers
           mountPath: /etc/sudoers.d
-        - name: kubectl
-          mountPath: /usr/bin/kubectl
-          readOnly: true
-        - name: aws-iam-authenticator
-          mountPath: /usr/bin/aws-iam-authenticator
-          readOnly: true
       volumes:
       # for systemctl to systemd access
       - name: dbus
@@ -100,14 +94,3 @@ spec:
         hostPath:
           path: /etc/sudoers.d
           type: Directory
-      # mount kubectl tool already available on host
-      - name: kubectl
-        hostPath:
-          path: /usr/bin/kubectl
-          type: File
-      # mount aws-iam-authenticator tool already available on host
-      - name: aws-iam-authenticator
-        hostPath:
-          path: /usr/bin/aws-iam-authenticator
-          type: File
-
