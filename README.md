@@ -10,7 +10,7 @@ Clone this repository and run:
 $ eksctl create cluster
 
 # Replace the role-name with the InstanceRole shown in `eksctl utils describe-stack`
-$ aws iam attach-role-policy --role-name eksctl-amazing-creature-154580785-NodeInstanceRole-RXNVQC8YTLP7 --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+$ aws iam attach-role-policy --role-name eksctl-amazing-creature-154580785-NodeInstanceRole-RXNVQC8YTLP7 --policy-arn arn:aws:iam::aws:policy/service-role/AmazonSSMManagedInstanceCore
 
 $ kubectl apply -f daemonset.yaml
 
@@ -86,6 +86,6 @@ Installation successful!
 
 Q2. CloudFormation stacks created by eksctl fails after enabling kube-ssm-agent
 
-A2. You should have attached the `AmazonEC2RoleforSSM` policy to the instance role managed by eksctl. CloudFormation stack deletion fail because an IAM role with one or more policies attached can't be removed.
+A2. You should have attached the `AmazonSSMManagedInstanceCore` policy to the instance role managed by eksctl. CloudFormation stack deletion fail because an IAM role with one or more policies attached can't be removed.
 
 The fix would be to deattach the policy from the role, and then rerunning `eksctl delete cluster` or retrigger a stack deletion from AWS Console or awscli.
