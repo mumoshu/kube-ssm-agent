@@ -14,8 +14,9 @@ spec:
         name: ssm-agent
     spec:
       hostNetwork: true
+      hostPID: true
       containers:
-      - image: mumoshu/aws-ssm-agent:v0.1.0
+      - image: mumoshu/aws-ssm-agent:v0.3.0
         name: ssm-agent
         securityContext:
           runAsUser: 0
