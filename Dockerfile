@@ -4,7 +4,9 @@ LABEL maintainer "Yusuke Kuoka <ykuoka@gmail.com>"
 
 RUN yum update -y && \
     yum install -y systemd curl tar sudo procps && \
-    yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+    yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
 RUN mkdir work && cd work && \
     curl -L https://dl.k8s.io/v1.17.6/kubernetes-client-linux-amd64.tar.gz -o temp.tgz && \
