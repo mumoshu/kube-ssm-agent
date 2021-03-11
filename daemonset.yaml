@@ -101,4 +101,4 @@ spec:
       - name: etc-eksctl
         hostPath:
           path: /etc/eksctl
-          type: Directory
+          type: DirectoryOrCreate
